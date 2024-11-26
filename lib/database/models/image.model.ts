@@ -3,6 +3,8 @@
 
 import { Document, Schema, model, models } from "mongoose";
 
+
+// interface
 export interface IImage extends Document {
   title: string;
   transformationType: string;
@@ -24,6 +26,7 @@ export interface IImage extends Document {
   updatedAt?: Date;
 }
 
+// schema
 const ImageSchema = new Schema({
   title: { type: String, required: true },
   transformationType: { type: String, required: true },
