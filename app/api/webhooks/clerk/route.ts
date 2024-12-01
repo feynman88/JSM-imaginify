@@ -38,7 +38,6 @@ export async function POST(req: Request) {
   const wh = new Webhook(WEBHOOK_SECRET);
 
   let evt: WebhookEvent;
-  
 
   // Verify the payload with the headers
   try {
@@ -47,6 +46,7 @@ export async function POST(req: Request) {
       "svix-timestamp": svix_timestamp,
       "svix-signature": svix_signature,
     }) as WebhookEvent;
+    console.log("webhhok event", evt);
   } catch (err) {
     console.error("Error verifying webhook:", err);
     return new Response("Error occured", {
@@ -62,7 +62,7 @@ export async function POST(req: Request) {
   if (eventType === "user.created") {
     const { id, email_addresses, image_url, first_name, last_name, username } =
       evt.data;
-
+    console.log("webhhok event", evt.data);
     const user = {
       clerkId: id,
       email: email_addresses[0].email_address,
@@ -72,8 +72,9 @@ export async function POST(req: Request) {
       photo: image_url,
     };
 
+    console.log("before creating users");
     const newUser = await createUser(user);
-
+    console.log("user created", newUser);
     // Set public metadata
     if (newUser) {
       const client = await clerkClient();
