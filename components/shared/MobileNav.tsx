@@ -29,7 +29,7 @@ const MobileNav = () => {
 
       <nav className="flex gap-2">
         <SignedIn>
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
 
           <Sheet>
             <SheetTrigger>
@@ -73,7 +73,7 @@ const MobileNav = () => {
                             width={24}
                             height={24}
                           />
-                          
+
                           {link.label}
                         </Link>
                       </li>

@@ -5,12 +5,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main className="root">
       <Sidebar />
-      <MobileNav/>
+      <MobileNav />
 
       <div className="root-conatiner">
         <div className="wrapper">{children}</div>
       </div>
-
     </main>
   );
 };
